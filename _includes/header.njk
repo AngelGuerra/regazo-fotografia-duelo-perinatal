@@ -1,0 +1,170 @@
+<nav
+  class="flex flex-row-reverse items-center justify-between flex-wrap p-6 h-20"
+  x-data="{ isOpen: false }"
+  @keydown.escape="isOpen = false"
+  @click.away="isOpen = false"
+>
+  <div class="flex items-center">
+    <button
+      type="button"
+      class="z-40 border border-black bg-white rounded-full p-2"
+      aria-label="Abrir el menú"
+      @click="isOpen = !isOpen"
+      :class="{ 'transition transform-180': isOpen }"
+    >
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          x-show="isOpen"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"
+        ></path>
+
+        <path
+          x-show="!isOpen"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        ></path>
+      </svg>
+    </button>
+  </div>
+
+  <transition
+    enter-class="opacity-0"
+    enter-active-class="ease-out transition-medium"
+    enter-to-class="opacity-100"
+    leave-class="opacity-100"
+    leave-active-class="ease-out transition-medium"
+    leave-to-class="opacity-0"
+  >
+    <div
+      @keydown.escape="isOpen = false"
+      x-show="isOpen"
+      class="z-10 fixed inset-0 transition-opacity"
+    >
+      <div
+        @click="isOpen = false"
+        class="absolute inset-0 bg-black opacity-50"
+        tabindex="0"
+      ></div>
+    </div>
+  </transition>
+
+  <aside
+    class="transform top-0 right-0 w-64 bg-white fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30"
+    :class="{ 'translate-x-0': isOpen, 'translate-x-full': !isOpen }"
+    x-show.transition="true"
+  >
+    <span
+      @click="isOpen = false"
+      class="flex w-full items-center p-4 border-b h-20"
+    >
+      Regazo Fotografía
+    </span>
+
+    <a
+      href="#home"
+      @click="isOpen = false"
+      class="flex items-center p-4 hover:bg-main hover:text-white"
+    >
+      <span class="mr-2">
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+          ></path>
+        </svg>
+      </span>
+      <span>Inicio</span>
+    </a>
+
+    <a
+      href="#about-us"
+      @click="isOpen = false"
+      class="flex items-center p-4 hover:bg-main hover:text-white"
+    >
+      <span class="mr-2">
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M8 13v-1m4 1v-3m4 3V8M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
+          />
+        </svg>
+      </span>
+      <span>Nosotras</span>
+    </a>
+
+    <a
+      href="#sessions"
+      @click="isOpen = false"
+      class="flex items-center p-4 hover:bg-main hover:text-white"
+    >
+      <span class="mr-2">
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M8 13v-1m4 1v-3m4 3V8M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
+          />
+        </svg>
+      </span>
+      <span>Sesiones</span>
+    </a>
+
+    <a
+      href="#links"
+      @click="isOpen = false"
+      class="flex items-center p-4 hover:bg-main hover:text-white"
+    >
+      <span class="mr-2">
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M8 13v-1m4 1v-3m4 3V8M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
+          />
+        </svg>
+      </span>
+      <span>Enlaces de ayuda</span>
+    </a>
+  </aside>
+</nav>
