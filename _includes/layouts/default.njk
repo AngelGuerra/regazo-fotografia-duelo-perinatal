@@ -21,7 +21,11 @@ description: Fotgrafia de duelo perinatal en Cantabria y alrededores
     <main class="mt-20">
       {{ content | safe }}
     </main>
-    <footer class="bg-gray-800 text-white py-12 flex justify-center items-center">{% include "footer.njk" %}</footer>
+    <footer
+      class="bg-gray-800 text-white py-6 flex flex-col justify-center items-center"
+    >
+      {% include "footer.njk" %}
+    </footer>
     {% include "scripts.njk" %}
   </body>
 </html>
