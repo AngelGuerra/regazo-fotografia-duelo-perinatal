@@ -30,21 +30,23 @@ module.exports = (eleventyConfig) => {
         formats: [outputFormat],
         outputDir: "./_site/img/",
       });
-      let lowestSrc = stats[outputFormat][0];
+      let highestSrc = stats[outputFormat][4];
 
       return `<style>
-      html ${selector} {
-        background-image: url("${lowestSrc.url}");
-      }
-
+      html ${selector} { background-image: url("${highestSrc.url}"); }
       ${Object.values(stats)
         .map((imageFormat) => {
-          return imageFormat.map(
-            (entry) =>
-              `@media screen and (min-width: ${entry.width}px) {
-                background-image: url("${entry.url}");
-              }`
-          );
+          return imageFormat
+            .reverse()
+            .map(
+              (entry) =>
+                `@media screen and (max-width: ${entry.width}px) {
+                  html ${selector} {
+                    background-image: url("${entry.url}");
+                  }
+                }`
+            )
+            .join("\n");
         })
         .join("\n")}
       </style>`;
