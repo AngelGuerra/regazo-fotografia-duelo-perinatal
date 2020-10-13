@@ -6,26 +6,46 @@
 <meta http-equiv="x-ua-compatible" content="ie=edge" />
 <meta name="robots" content="noindex, nofollow">
 
-{# TITLE #}
+{# <base href="{{ permalink }}" /> #}
+
+{# META #}
 <title>{{ title }} | {{ name }}</title>
-<meta property="og:title" content="{{ title }} | {{ name }}" />
-<meta name="twitter:title" content="{{ title }} | {{ name }}" />
-<meta itemprop="name" content="{{ title }} | {{ name }}" />
 <meta name="application-name" content="{{ title }} | {{ name }}" />
-<meta property="og:site_name" content="{{ title }} | {{ name }}" />
-
-{# DESCRIPTION #}
 <meta name="description" content="{{ description }}" />
-<meta itemprop="description" content="{{ description }}" />
-<meta property="og:description" content="{{ description }}" />
-<meta name="twitter:description" content="{{ description }}" />
+<meta name="author" content="{{ name }}" />
+{# see: https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/dev-guides/bg182645(v=vs.85)#link-highlighting #}
+<meta name="msapplication-tap-highlight" content="no" />
+{# see: https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html #}
+<meta name="apple-mobile-web-app-title" content="{{ name }}" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-touch-fullscreen" content="yes" />
+{# <meta name="url" content="{{ permalink }}" /> #}
 
-{# LINKS #}
-<!-- <base href="{{ permalink }}" />
-<link rel="canonical" href="{{ permalink }}" itemprop="url" />
-<meta name="url" content="{{ permalink }}" />
-<meta name="twitter:url" content="{{ permalink }}" />
-<meta property="og:url" content="{{ permalink }}" /> -->
+{# ITEMPROP #}
+<meta itemprop="name" content="{{ title }} | {{ name }}" />
+<meta itemprop="description" content="{{ description }}" />
+{# <meta itemprop="image" content="{{ .Scratch.Get "finalImage" }}" /> #}
+{# <link itemprop="url" rel="canonical" href="{{ permalink }}" /> #}
+
+{# OG #}
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="{{ title }} | {{ name }}" />
+<meta property="og:title" content="{{ title }} | {{ name }}" />
+<meta property="og:description" content="{{ description }}" />
+{# <meta property="og:url" content="{{ permalink }}" /> #}
+{# <meta property="og:image" content="{{ .Scratch.Get "finalImage" }}" /> #}
+{# <meta property="og:image:width" content="{{ .Params.thumbnail.width | default .Site.Params.ogimage.width }}" /> #}
+{# <meta property="og:image:height" content="{{ .Params.thumbnail.height | default .Site.Params.ogimage.height }}" /> #}
+{# <meta property="og:updated_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z0700" | safeHTML }}" /> #}
+
+{# TWITTER #}
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{ title }} | {{ name }}" />
+<meta name="twitter:description" content="{{ description }}" />
+{# <meta name="twitter:url" content="{{ permalink }}" /> #}
+{# <meta name="twitter:image" content="{{ .Scratch.Get "finalImage" }}" /> #}
+{# <meta name="twitter:image:src" content="{{ .Scratch.Get "finalImage" }}" /> #}
 
 {# LANGUAGE #}
 <meta property="og:locale" content="es" />
@@ -36,3 +56,19 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
+
+{% generator '' %}
+
+{# <script defer type="application/ld+json">
+  {
+    "@context": "http://schema.org", 
+    "@type": "WebSite", 
+    "url": "{{ .Permalink }}", 
+    "sameAs": [
+        "{{ .Site.Params.social.facebook }}",
+        "{{ .Site.Params.social.instagram }}"
+    ], 
+    "name": "{{ .Title }}",
+    "image": "{{ .Scratch.Get "finalImage" }}" 
+  }
+</script> #}

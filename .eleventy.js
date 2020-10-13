@@ -1,4 +1,6 @@
 const htmlmin = require("html-minifier");
+const CleanCSS = require("clean-css");
+const generator = require("eleventy-plugin-meta-generator");
 const Image = require("@11ty/eleventy-img");
 
 module.exports = (eleventyConfig) => {
@@ -18,7 +20,7 @@ module.exports = (eleventyConfig) => {
 
   eleventyConfig.addNunjucksAsyncShortcode(
     "responsiveBackground",
-    async function (src, selector, outputFormat = "jpeg") {
+    async (src, selector, outputFormat = "jpeg") => {
       if (selector === undefined) {
         throw new Error(
           `Missing \`selector\` on responsiveBackground from: ${src}`
@@ -32,7 +34,7 @@ module.exports = (eleventyConfig) => {
       });
       let highestSrc = stats[outputFormat][4];
 
-      return `<style>
+      return new CleanCSS({}).minify(`
       html ${selector} { background-image: url("${highestSrc.url}"); }
       ${Object.values(stats)
         .map((imageFormat) => {
@@ -49,7 +51,7 @@ module.exports = (eleventyConfig) => {
             .join("\n");
         })
         .join("\n")}
-      </style>`;
+      `).styles;
     }
   );
 
@@ -69,5 +71,27 @@ module.exports = (eleventyConfig) => {
     }
 
     return content;
+  });
+
+  eleventyConfig.addNunjucksTag("generator", (nunjucksEngine) => {
+    return new (function () {
+      this.tags = ["generator"];
+
+      this.parse = function (parser, nodes, lexer) {
+        var tok = parser.nextToken();
+
+        var args = parser.parseSignature(null, true);
+        parser.advanceAfterBlockEnd(tok.value);
+
+        return new nodes.CallExtensionAsync(this, "run", args);
+      };
+
+      this.run = function (_, myStringArg, callback) {
+        generator().then((metaTag) => {
+          let ret = new nunjucksEngine.runtime.SafeString(metaTag);
+          callback(null, ret);
+        });
+      };
+    })();
   });
 };

@@ -1,7 +1,9 @@
 module.exports = {
   future: {
-    removeDeprecatedGapUtilities: true,
+    defaultLineHeights: true,
     purgeLayersByDefault: true,
+    removeDeprecatedGapUtilities: true,
+    standardFontWeights: true,
   },
   purge: {
     content: ["_site/**/*.html"],

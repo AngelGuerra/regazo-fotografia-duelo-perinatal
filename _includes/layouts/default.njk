@@ -13,8 +13,10 @@ description: Acompañamiento fotográfico en el duelo gestacional y neonatal en 
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/style.css" />
-    {% responsiveBackground "img/paper-cranes.jpeg", "body #home" %}
-    {% responsiveBackground "img/memories-box.jpeg", "body #sessions" %}
+    <style>
+      {% responsiveBackground "img/paper-cranes.jpeg", "body #home" | safe %}
+      {% responsiveBackground "img/memories-box.jpeg", "body #sessions" | safe %}
+    </style>
   </head>
   <body class="font-main">
     <header class="fixed w-full z-10 top-0">{% include "header.njk" %}</header>
