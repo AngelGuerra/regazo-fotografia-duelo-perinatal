@@ -6,7 +6,7 @@
 <meta http-equiv="x-ua-compatible" content="ie=edge" />
 <meta name="robots" content="noindex, nofollow">
 
-{# <base href="{{ permalink }}" /> #}
+<base href="{{ domain }}" />
 
 {# META #}
 <title>{{ title }} | {{ name }}</title>
@@ -20,20 +20,20 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="apple-touch-fullscreen" content="yes" />
-{# <meta name="url" content="{{ permalink }}" /> #}
+<meta name="url" content="{{ domain }}" />
 
 {# ITEMPROP #}
 <meta itemprop="name" content="{{ title }} | {{ name }}" />
 <meta itemprop="description" content="{{ description }}" />
 {# <meta itemprop="image" content="{{ .Scratch.Get "finalImage" }}" /> #}
-{# <link itemprop="url" rel="canonical" href="{{ permalink }}" /> #}
+<link itemprop="url" rel="canonical" href="{{ domain }}" />
 
 {# OG #}
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="{{ title }} | {{ name }}" />
 <meta property="og:title" content="{{ title }} | {{ name }}" />
 <meta property="og:description" content="{{ description }}" />
-{# <meta property="og:url" content="{{ permalink }}" /> #}
+<meta property="og:url" content="{{ domain }}" />
 {# <meta property="og:image" content="{{ .Scratch.Get "finalImage" }}" /> #}
 {# <meta property="og:image:width" content="{{ .Params.thumbnail.width | default .Site.Params.ogimage.width }}" /> #}
 {# <meta property="og:image:height" content="{{ .Params.thumbnail.height | default .Site.Params.ogimage.height }}" /> #}
@@ -43,7 +43,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="{{ title }} | {{ name }}" />
 <meta name="twitter:description" content="{{ description }}" />
-{# <meta name="twitter:url" content="{{ permalink }}" /> #}
+<meta name="twitter:url" content="{{ domain }}" />
 {# <meta name="twitter:image" content="{{ .Scratch.Get "finalImage" }}" /> #}
 {# <meta name="twitter:image:src" content="{{ .Scratch.Get "finalImage" }}" /> #}
 
@@ -63,12 +63,12 @@
   {
     "@context": "http://schema.org", 
     "@type": "WebSite", 
-    "url": "{{ .Permalink }}", 
+    "url": "{{ domain }}", 
     "sameAs": [
-        "{{ .Site.Params.social.facebook }}",
-        "{{ .Site.Params.social.instagram }}"
+        "{{ facebook }}",
+        "{{ instagram }}"
     ], 
-    "name": "{{ .Title }}",
+    "name": "{{ title }}",
     "image": "{{ .Scratch.Get "finalImage" }}" 
   }
 </script> #}
