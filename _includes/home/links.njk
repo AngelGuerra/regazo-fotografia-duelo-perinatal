@@ -1,33 +1,34 @@
 <div class="p-4 w-full md:w-4/5">
   <h3 class="text-3xl font-title text-center mb-4">Enlaces de ayuda</h3>
 
-  <div class="border border-blue-600 p-4 shadow-lg mb-6">
+  <div class="border border-blue-700 p-4 shadow-lg mb-6">
     <p>
-      Por favor, si estás relacionada/o con la muerte gestacional y neonatal en
-      Cantabria y quieres que te mencionemos aquí, llámanos o escríbenos.
+      Por favor, si ofreces algún servicio relacionado con la muerte gestacional
+      y neonatal en Cantabria y quieres que te mencionemos aquí,
+      <a
+        href="#contact"
+        title="Formas de contactar con nosotras"
+        class="text-blue-700 hover:underline"
+        >escríbenos</a
+      >.
     </p>
   </div>
 
   <ul class="list-disc list-inside">
     <li class="mb-3">
-      <a
-        class="text-blue-400 hover:underline"
-        href="http://www.normagrau.com/"
-        target="_blank"
-        rel="noopener noreferer"
-        >Norma Grau.</a
-      >
-      Fotografía y duelo.
+      {% externalLink
+        "http://www.normagrau.com/",
+        "Norma Grau",
+        "Página web de Norma Grau"
+      %}. Fotografía y duelo.
     </li>
     <li class="mb-3">
-      <a
-        class="text-blue-400 hover:underline"
-        href="https://www.redelhuecodemivientre.es/"
-        target="_blank"
-        rel="noopener noreferer"
-        >La Red el Hueco de mi Vientre</a
-      >
-      es una asociación nacional que cuenta con representación en Cantabria.<br />
+      {% externalLink
+        "https://www.redelhuecodemivientre.es/",
+        "La Red el Hueco de mi Vientre",
+        "Página web de la Red el Hueco de mi Vientre"
+      %} es una asociación nacional que cuenta con representación en Cantabria.
+      <br />
       Contacto de Santander e información general:
       <script type="text/javascript">
         document.write(
@@ -42,15 +43,6 @@
         );
       </script>
       // 616234787
-    </li>
-    <li class="mb-3">
-      <a
-        class="text-blue-400 hover:underline"
-        href="https://www.mayeutike.es"
-        target="_blank"
-        rel="noopener noreferer"
-        >Psicóloga perinatal Mayeutiké.</a
-      >
     </li>
   </ul>
 </div>
