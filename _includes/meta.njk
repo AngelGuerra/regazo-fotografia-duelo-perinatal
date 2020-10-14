@@ -1,11 +1,10 @@
+{% set img = "img/rrss.jpeg" %}
 <meta charset="UTF-8" />
 <meta
   name="viewport"
   content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
 />
 <meta http-equiv="x-ua-compatible" content="ie=edge" />
-<meta name="robots" content="noindex, nofollow">
-
 <base href="{{ domain }}" />
 
 {# META #}
@@ -25,7 +24,7 @@
 {# ITEMPROP #}
 <meta itemprop="name" content="{{ title }} | {{ name }}" />
 <meta itemprop="description" content="{{ description }}" />
-{# <meta itemprop="image" content="{{ .Scratch.Get "finalImage" }}" /> #}
+<meta itemprop="image" content="{% metaImg img, 1200, "url" | url %}" />
 <link itemprop="url" rel="canonical" href="{{ domain }}" />
 
 {# OG #}
@@ -34,9 +33,9 @@
 <meta property="og:title" content="{{ title }} | {{ name }}" />
 <meta property="og:description" content="{{ description }}" />
 <meta property="og:url" content="{{ domain }}" />
-{# <meta property="og:image" content="{{ .Scratch.Get "finalImage" }}" /> #}
-{# <meta property="og:image:width" content="{{ .Params.thumbnail.width | default .Site.Params.ogimage.width }}" /> #}
-{# <meta property="og:image:height" content="{{ .Params.thumbnail.height | default .Site.Params.ogimage.height }}" /> #}
+<meta property="og:image" content="{% metaImg img, 1200, "url" | url %}" />
+<meta property="og:image:width" content="{% metaImg img, 1200, "width" %}" />
+<meta property="og:image:height" content="{% metaImg img, 1200, "height" %}" />
 {# <meta property="og:updated_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z0700" | safeHTML }}" /> #}
 
 {# TWITTER #}
@@ -44,8 +43,8 @@
 <meta name="twitter:title" content="{{ title }} | {{ name }}" />
 <meta name="twitter:description" content="{{ description }}" />
 <meta name="twitter:url" content="{{ domain }}" />
-{# <meta name="twitter:image" content="{{ .Scratch.Get "finalImage" }}" /> #}
-{# <meta name="twitter:image:src" content="{{ .Scratch.Get "finalImage" }}" /> #}
+<meta name="twitter:image" content="{% metaImg img, 1200, "url" | url %}" />
+<meta name="twitter:image:src" content="{% metaImg img, 1200, "url" | url %}" />
 
 {# LANGUAGE #}
 <meta property="og:locale" content="es" />
@@ -59,7 +58,7 @@
 
 {% generator '' %}
 
-{# <script defer type="application/ld+json">
+<script defer type="application/ld+json">
   {
     "@context": "http://schema.org", 
     "@type": "WebSite", 
@@ -69,6 +68,6 @@
         "{{ instagram }}"
     ], 
     "name": "{{ title }}",
-    "image": "{{ .Scratch.Get "finalImage" }}" 
+    "image": "{% metaImg img, 1200, "url" | url %}" 
   }
-</script> #}
+</script>

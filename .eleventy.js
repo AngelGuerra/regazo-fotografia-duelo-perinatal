@@ -2,6 +2,7 @@ const htmlmin = require("html-minifier");
 const CleanCSS = require("clean-css");
 const generator = require("eleventy-plugin-meta-generator");
 const Image = require("@11ty/eleventy-img");
+const { URL } = require("url");
 
 module.exports = (eleventyConfig) => {
   eleventyConfig.setUseGitIgnore(false);
@@ -48,6 +49,19 @@ module.exports = (eleventyConfig) => {
     </a>`;
     }
   );
+
+  // eleventyConfig.addNunjucksAsyncShortcode(
+  //   "metaImg",
+  //   async (src, attribute, outputFormat = "jpeg") => {
+  //     let stats = await Image(src, {
+  //       widths: [1200],
+  //       formats: [outputFormat],
+  //       outputDir: "./_site/img/",
+  //     });
+
+  //     return stats[outputFormat][0][attribute];
+  //   }
+  // );
 
   eleventyConfig.addNunjucksAsyncShortcode(
     "responsiveBackground",
@@ -109,9 +123,9 @@ module.exports = (eleventyConfig) => {
       this.tags = ["generator"];
 
       this.parse = function (parser, nodes, lexer) {
-        var tok = parser.nextToken();
+        const tok = parser.nextToken();
+        const args = parser.parseSignature(null, true);
 
-        var args = parser.parseSignature(null, true);
         parser.advanceAfterBlockEnd(tok.value);
 
         return new nodes.CallExtensionAsync(this, "run", args);
@@ -124,5 +138,56 @@ module.exports = (eleventyConfig) => {
         });
       };
     })();
+  });
+
+  eleventyConfig.addNunjucksTag("metaImg", (nunjucksEngine) => {
+    return new (function () {
+      this.tags = ["metaImg"];
+
+      this.parse = function (parser, nodes, lexer) {
+        const tok = parser.nextToken();
+        const args = parser.parseSignature(null, true);
+
+        parser.advanceAfterBlockEnd(tok.value);
+
+        return new nodes.CallExtensionAsync(this, "run", args);
+      };
+
+      this.run = async function (context, src, width, attr, callback) {
+        let stats = await Image(src, {
+          widths: [width],
+          formats: ["jpeg"],
+          outputDir: "./_site/img/",
+        });
+
+        if (attr !== "url") {
+          callback(null, stats["jpeg"][0][attr]);
+          return;
+        }
+
+        callback(
+          null,
+          eleventyConfig.getFilter("absoluteUrl")(
+            stats["jpeg"][0][attr],
+            "https://dueloperinatal.regazofotografia.com/"
+          )
+        );
+      };
+    })();
+  });
+
+  eleventyConfig.addFilter("absoluteUrl", function (url, base) {
+    try {
+      return new URL(url, base).toString();
+    } catch (e) {
+      console.error(
+        "Trying to convert %o to be an absolute url with base %o and failed, returning: %o (invalid url)",
+        url,
+        base,
+        url
+      );
+
+      return url;
+    }
   });
 };
