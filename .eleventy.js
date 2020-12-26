@@ -142,7 +142,6 @@ const generatorTag = (nunjucksEngine) => {
     this.parse = parser;
 
     this.run = function (_, myStringArg, callback) {
-      console.log("generator");
       generator().then((metaTag) => {
         callback(null, new nunjucksEngine.runtime.SafeString(metaTag));
       });
