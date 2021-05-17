@@ -7,13 +7,13 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply text-gray-300;
+  @apply bg-gray-300;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply text-blue-700;
+  @apply bg-blue-700;
+}
 
-  &:hover {
-    @apply text-blue-900;
-  }
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-blue-900;
 }
