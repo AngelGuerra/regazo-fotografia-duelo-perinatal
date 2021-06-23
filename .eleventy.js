@@ -219,7 +219,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addWatchTarget("./_tmp/style.css");
   eleventyConfig.addPassthroughCopy({
     "./_tmp/style.css": "./style.css",
-    "./node_modules/alpinejs/dist/alpine.js": "./alpine.js",
+    "./node_modules/alpinejs/dist/cdn.min.js": "./alpine.js",
     "./favicon": ".",
   });
   eleventyConfig.addTransform("htmlmin", minifyHtml);
