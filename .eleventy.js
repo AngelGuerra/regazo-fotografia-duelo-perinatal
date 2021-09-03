@@ -216,11 +216,12 @@ module.exports = (eleventyConfig) => {
   };
 
   eleventyConfig.setUseGitIgnore(false);
-  eleventyConfig.addWatchTarget("./_tmp/style.css");
+  eleventyConfig.addLayoutAlias("default", "layouts/default.njk");
+  eleventyConfig.setTemplateFormats(["njk"]);
   eleventyConfig.addPassthroughCopy({
-    "./_tmp/style.css": "./style.css",
-    "./node_modules/alpinejs/dist/cdn.min.js": "./alpine.js",
-    "./favicon": ".",
+    "_assets/css/": "./assets/css/",
+    "_tmp/js/": "./assets/js/",
+    favicon: ".",
   });
   eleventyConfig.addTransform("htmlmin", minifyHtml);
   eleventyConfig.addShortcode("version", currentDate);

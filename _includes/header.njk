@@ -1,15 +1,15 @@
 <nav
   class="flex flex-row-reverse items-center justify-between flex-wrap p-6 h-20"
-  x-data="{ isOpen: false }"
-  @keydown.escape="isOpen = false"
-  @click.away="isOpen = false"
+  x-data="nav"
+  @keydown.escape="closeMenu"
+  @click.away="closeMenu"
 >
   <div class="flex items-center">
     <button
       type="button"
       class="z-40 border border-black bg-white rounded-full p-2"
-      aria-label="Abrir el menú"
-      @click="isOpen = !isOpen"
+      aria-label="Alternar la vista del menú"
+      @click="toggleMenu"
       :class="{ 'transition transform-180': isOpen }"
     >
       <svg
@@ -25,6 +25,7 @@
           stroke-linejoin="round"
           stroke-width="2"
           d="M6 18L18 6M6 6l12 12"
+          x-cloak
         ></path>
 
         <path
@@ -47,13 +48,13 @@
     leave-to-class="opacity-0"
   >
     <div
-      @keydown.escape="isOpen = false"
+      @keydown.escape="closeMenu"
       x-show="isOpen"
       class="z-10 fixed inset-0 transition-opacity"
     >
       <div
-        @click="isOpen = false"
-        class="absolute inset-0 bg-black opacity-50"
+        @click="closeMenu"
+        class="absolute inset-0 bg-black bg-opacity-50"
         tabindex="0"
       ></div>
     </div>
@@ -63,9 +64,10 @@
     class="transform top-0 right-0 w-64 bg-white fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30"
     :class="{ 'translate-x-0': isOpen, 'translate-x-full': !isOpen }"
     x-show.transition="true"
+    x-cloak
   >
     <span
-      @click="isOpen = false"
+      @click="closeMenu"
       class="flex w-full items-center p-4 border-b h-20"
     >
       Regazo Fotografía
@@ -73,7 +75,7 @@
 
     <a
       href="#home"
-      @click="isOpen = false"
+      @click="scrollToAndCloseMenu"
       class="flex items-center p-4 hover:bg-blue-700 hover:text-white"
     >
       <span class="mr-2">
@@ -97,7 +99,7 @@
 
     <a
       href="#about-us"
-      @click="isOpen = false"
+      @click="scrollToAndCloseMenu"
       class="flex items-center p-4 hover:bg-blue-700 hover:text-white"
     >
       <span class="mr-2">
@@ -121,7 +123,7 @@
 
     <a
       href="#sessions"
-      @click="isOpen = false"
+      @click="scrollToAndCloseMenu"
       class="flex items-center p-4 hover:bg-blue-700 hover:text-white"
     >
       <span class="mr-2">
@@ -151,7 +153,7 @@
 
     <a
       href="#links"
-      @click="isOpen = false"
+      @click="scrollToAndCloseMenu"
       class="flex items-center p-4 hover:bg-blue-700 hover:text-white"
     >
       <span class="mr-2">
@@ -175,7 +177,7 @@
 
     <a
       href="#contact"
-      @click="isOpen = false"
+      @click="scrollToAndCloseMenu"
       class="flex items-center p-4 hover:bg-blue-700 hover:text-white"
     >
       <span class="mr-2">
