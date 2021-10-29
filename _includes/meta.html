@@ -1,73 +1,73 @@
-{% set img = "img/rrss.jpeg" %}
+{% capture defaultImage %}{% metaImg "_assets/img/rrss.jpeg" %}{% endcapture %}
 <meta charset="UTF-8" />
 <meta
   name="viewport"
   content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
 />
 <meta http-equiv="x-ua-compatible" content="ie=edge" />
-<base href="{{ domain }}" />
+<base href="{% domain %}" />
 
-{# META #}
+{% comment %} META {% endcomment %}
 <title>{{ title }} | {{ name }}</title>
 <meta name="application-name" content="{{ title }} | {{ name }}" />
 <meta name="description" content="{{ description }}" />
 <meta name="author" content="{{ name }}" />
-{# see: https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/dev-guides/bg182645(v=vs.85)#link-highlighting #}
+{% comment %} see: https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/dev-guides/bg182645(v=vs.85)#link-highlighting {% endcomment %}
 <meta name="msapplication-tap-highlight" content="no" />
-{# see: https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html #}
+{% comment %} see: https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html {% endcomment %}
 <meta name="apple-mobile-web-app-title" content="{{ name }}" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="apple-touch-fullscreen" content="yes" />
-<meta name="url" content="{{ domain }}" />
+<meta name="url" content="{% domain %}" />
 
-{# ITEMPROP #}
+{% comment %} ITEMPROP {% endcomment %}
 <meta itemprop="name" content="{{ title }} | {{ name }}" />
 <meta itemprop="description" content="{{ description }}" />
-<meta itemprop="image" content="{% metaImg img, 1200, "url" | url %}" />
-<link itemprop="url" rel="canonical" href="{{ domain }}" />
+<meta itemprop="image" content="{{ defaultImage }}" />
+<link itemprop="url" rel="canonical" href="{% domain %}" />
 
-{# OG #}
+{% comment %} OG {% endcomment %}
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="{{ title }} | {{ name }}" />
 <meta property="og:title" content="{{ title }} | {{ name }}" />
 <meta property="og:description" content="{{ description }}" />
-<meta property="og:url" content="{{ domain }}" />
-<meta property="og:image" content="{% metaImg img, 1200, "url" | url %}" />
-<meta property="og:image:width" content="{% metaImg img, 1200, "width" %}" />
-<meta property="og:image:height" content="{% metaImg img, 1200, "height" %}" />
-{# <meta property="og:updated_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z0700" | safeHTML }}" /> #}
+<meta property="og:url" content="{% domain %}" />
+<meta property="og:image" content="{{ defaultImage }}" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="1200" />
+{% comment %} <meta property="og:updated_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z0700" | safeHTML }}" /> {% endcomment %}
 
-{# TWITTER #}
+{% comment %} TWITTER {% endcomment %}
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="{{ title }} | {{ name }}" />
 <meta name="twitter:description" content="{{ description }}" />
-<meta name="twitter:url" content="{{ domain }}" />
-<meta name="twitter:image" content="{% metaImg img, 1200, "url" | url %}" />
-<meta name="twitter:image:src" content="{% metaImg img, 1200, "url" | url %}" />
+<meta name="twitter:url" content="{% domain %}" />
+<meta name="twitter:image" content="{{ defaultImage }}" />
+<meta name="twitter:image:src" content="{{ defaultImage }}" />
 
-{# LANGUAGE #}
+{% comment %} LANGUAGE {% endcomment %}
 <meta property="og:locale" content="es" />
 <meta name="language" content="spanish" />
 
-{# ICONS #}
+{% comment %} ICONS {% endcomment %}
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 
-{% generator '' %}
+{% generator %}
 
 <script defer type="application/ld+json">
   {
     "@context": "http://schema.org", 
     "@type": "WebSite", 
-    "url": "{{ domain }}", 
+    "url": "{% domain %}", 
     "sameAs": [
         "{{ facebook }}",
         "{{ instagram }}"
     ], 
     "name": "{{ title }}",
-    "image": "{% metaImg img, 1200, "url" | url %}" 
+    "image": "{{ defaultImage }}" 
   }
 </script>

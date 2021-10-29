@@ -93,6 +93,28 @@ const responsiveBackground = async (src, selector, outputFormat = "jpeg") => {
 };
 
 /**
+ * @description Genera una imagen para su uso, por ejemplo, en los microdatos.
+ * @param {String} src Ruta original de la imagen.
+ * @param {Number} quality Calidad de la imagen generada.
+ * @param {Number} width Ancho de la imagen generada.
+ * @param {String} format Formato de salida de la imagen generada.
+ * @returns {String} URL de la imagen.
+ */
+const metaImg = async (src, quality = 95, width = 1200, format = "webp") => {
+  const metadata = await Image(src, {
+    widths: [width],
+    formats: [format],
+    outputDir: `./_site/img/`,
+    urlPath: `/assets/img/meta`,
+    sharpWebpOptions: {
+      quality: quality,
+    },
+  });
+
+  return absoluteUrl(metadata[format][0].url);
+};
+
+/**
  * @description Minifies the html to optimize the page size.
  * @param {String} content Content to minify.
  * @param {String} outputPath Content output path.
@@ -117,45 +139,35 @@ const minifyHtml = (content, outputPath) => {
 };
 
 /**
- * @description Parser for Nunjucks tags.
- * @param {Parser} parser Parser.
- * @param {Object} nodes Nodes.
- * @param {Object} lexer Lexer.
+ * @description Create the tag "generator" to use in the page metas.
  * @returns {Function}
  */
-const parser = function (parser, nodes, lexer) {
-  const tok = parser.nextToken();
-  const args = parser.parseSignature(null, true);
-  parser.advanceAfterBlockEnd(tok.value);
-
-  return new nodes.CallExtensionAsync(this, "run", args);
+const generatorTag = () => {
+  return {
+    render: () => generator(),
+  };
 };
 
 /**
- * @description Create the tag "generator" to use in the page metas.
- * @param {Object} nunjucksEngine Nunjucks engine.
- * @returns {Function}
+ * @description Returs domain.
+ * @param {String} url Relative URL.
+ * @returns {String}
  */
-const generatorTag = (nunjucksEngine) => {
-  return new (function () {
-    this.tags = ["generator"];
-    this.parse = parser;
-
-    this.run = function (_, myStringArg, callback) {
-      generator().then((metaTag) => {
-        callback(null, new nunjucksEngine.runtime.SafeString(metaTag));
-      });
-    };
-  })();
-};
+const domain = (withSlash = true) =>
+  `${
+    process.env.ELEVENTY_PRODUCTION
+      ? "https://dueloperinatal.regazofotografia.com"
+      : "http://localhost:8080"
+  }${withSlash ? "/" : ""}`;
 
 /**
  * @description Returns the absolute URL for a relative URL.
  * @param {String} url Relative URL.
- * @param {String} base Base URL.
  * @returns {String}
  */
-const absoluteUrl = (url, base) => {
+const absoluteUrl = (url) => {
+  const base = domain(false);
+
   try {
     return new URL(url, base).toString();
   } catch (error) {
@@ -171,66 +183,23 @@ const absoluteUrl = (url, base) => {
 };
 
 module.exports = (eleventyConfig) => {
-  /**
-   * @description Returns the value of an attribute of an image. In case of
-   * requesting the URL, the absoluteUrl filter is applied.
-   * @see absoluteUrl
-   * @returns {Function}
-   */
-  const metaImg = () => {
-    return new (function () {
-      this.tags = ["metaImg"];
-      this.parse = parser;
-
-      /**
-       * @description Resizes an image, if it is not resize yet, and returns
-       * an attribute.
-       * @param {Context} context Context.
-       * @param {String} src Path of the image.
-       * @param {String} width Image width.
-       * @param {String} attr Image attr to extract.
-       * @param {Function} callback Callback.
-       * @returns {Void}
-       */
-      this.run = async (context, src, width, attr, callback) => {
-        let stats = await Image(src, {
-          widths: [width],
-          formats: ["jpeg"],
-          outputDir: "./_site/img/",
-        });
-
-        if (attr !== "url") {
-          callback(null, stats["jpeg"][0][attr]);
-          return;
-        }
-
-        callback(
-          null,
-          eleventyConfig.getFilter("absoluteUrl")(
-            stats["jpeg"][0][attr],
-            "https://dueloperinatal.regazofotografia.com/"
-          )
-        );
-      };
-    })();
-  };
-
   eleventyConfig.setUseGitIgnore(false);
-  eleventyConfig.addLayoutAlias("default", "layouts/default.njk");
-  eleventyConfig.setTemplateFormats(["njk"]);
+  eleventyConfig.addLayoutAlias("default", "layouts/default.html");
+  eleventyConfig.setTemplateFormats(["html"]);
   eleventyConfig.addPassthroughCopy({
     "_assets/css/": "./assets/css/",
+    "_assets/favicons": "/",
     "_tmp/js/": "./assets/js/",
     favicon: ".",
   });
   eleventyConfig.addTransform("htmlmin", minifyHtml);
   eleventyConfig.addShortcode("version", currentDate);
-  eleventyConfig.addNunjucksShortcode("externalLink", externalLink);
-  eleventyConfig.addNunjucksAsyncShortcode(
+  eleventyConfig.addShortcode("externalLink", externalLink);
+  eleventyConfig.addShortcode("metaImg", metaImg);
+  eleventyConfig.addShortcode("domain", domain);
+  eleventyConfig.addAsyncShortcode(
     "responsiveBackground",
     responsiveBackground
   );
-  eleventyConfig.addNunjucksTag("generator", generatorTag);
-  eleventyConfig.addNunjucksTag("metaImg", metaImg);
-  eleventyConfig.addFilter("absoluteUrl", absoluteUrl);
+  eleventyConfig.addLiquidTag("generator", generatorTag);
 };

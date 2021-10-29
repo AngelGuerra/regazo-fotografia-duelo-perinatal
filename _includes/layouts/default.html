@@ -3,15 +3,17 @@ name: Regazo Fotografía
 title: Fotografía de duelo perinatal en Cantabria
 description: Ofrecemos acopañamiento fotográfico y creación de recuerdos en el duelo gestacional y neonatal - Actividad voluntaria sin ánimo de lucro.
 principal: https://regazofotografia.com/
-domain: https://dueloperinatal.regazofotografia.com/
 facebook: https://www.facebook.com/regazofotografia
 instagram: https://www.instagram.com/regazofotografia/
 ---
 
+{% capture paperCranes %}{% responsiveBackground "_assets/img/paper-cranes.jpeg", "body #home" %}{% endcapture %}
+{% capture memoriesBox %}{% responsiveBackground "_assets/img/memories-box.jpeg", "body #sessions" %}{% endcapture %}
+
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    {% include "meta.njk" %}
+    {% include meta.html %}
     <link
       href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Source+Sans+Pro:wght@300;400;700&display=swap"
       rel="stylesheet"
@@ -19,20 +21,25 @@ instagram: https://www.instagram.com/regazofotografia/
     <link rel="stylesheet" href="/assets/css/tailwind.css" />
     <link rel="stylesheet" href="/assets/css/styles.css" />
     <style>
-      {% responsiveBackground "img/paper-cranes.jpeg", "body #home" | safe %}
-      {% responsiveBackground "img/memories-box.jpeg", "body #sessions" | safe %}
+      {{ paperCranes | safe }}
+      {{ memoriesBox | safe }}
     </style>
   </head>
   <body class="font-main">
-    <header class="fixed w-full z-10 top-0">{% include "header.njk" %}</header>
-    <main class="mt-20">
-      {{ content | safe }}
-    </main>
+    <header class="fixed w-full z-10 top-0">{% include header.html %}</header>
+    <main class="mt-20">{{ content | safe }}</main>
     <footer
-      class="bg-gray-800 text-white py-6 flex flex-col justify-center items-center"
+      class="
+        bg-gray-800
+        text-white
+        py-6
+        flex flex-col
+        justify-center
+        items-center
+      "
     >
-      {% include "footer.njk" %}
+      {% include footer.html %}
     </footer>
-    {% include "scripts.njk" %}
+    {% include scripts.html %}
   </body>
 </html>
