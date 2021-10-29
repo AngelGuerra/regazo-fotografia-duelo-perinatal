@@ -104,7 +104,7 @@ const metaImg = async (src, quality = 95, width = 1200, format = "webp") => {
   const metadata = await Image(src, {
     widths: [width],
     formats: [format],
-    outputDir: `./_site/img/`,
+    outputDir: `./_site/assets/img/meta`,
     urlPath: `/assets/img/meta`,
     sharpWebpOptions: {
       quality: quality,
@@ -188,7 +188,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.setTemplateFormats(["html"]);
   eleventyConfig.addPassthroughCopy({
     "_assets/css/": "./assets/css/",
-    "_assets/favicons": "/",
+    "_assets/favicon": "/",
     "_tmp/js/": "./assets/js/",
     favicon: ".",
   });
