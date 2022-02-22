@@ -1,89 +1,109 @@
-<a
-  href="{{ principal }}"
-  title="Página web de Regazo Fotografía"
-  target="_blank"
-  class="border-b border-dotted hover:text-blue-700 transition-colors duration-300"
-  >&copy; Regazo Fotografía</a
->
+<div class="container mx-auto px-4">
+  <section class="mb-4 flex w-full flex-wrap items-start justify-between gap-4">
+    <div class="flex flex-col gap-1 text-sm">
+      <a
+        href="{{ principal }}"
+        title="Página web de Regazo Fotografía"
+        target="_blank"
+        class="mb-4 underline underline-offset-1 transition-colors duration-300 hover:text-gray-300"
+        >&copy; Regazo Fotografía</a
+      >
+      <a
+        href="/aviso-legal/"
+        class="underline underline-offset-1 transition-colors duration-300 hover:text-gray-300"
+      >
+        Aviso legal
+      </a>
+      <a
+        href="/politica-de-cookies/"
+        class="underline underline-offset-1 transition-colors duration-300 hover:text-gray-300"
+      >
+        Política de cookies
+      </a>
+    </div>
 
-<div class="flex mt-3">
-  <a
-    href="{{ facebook }}"
-    rel="noopener noreferrer me"
-    class="mr-2 hover:text-blue-700 transition-colors duration-300"
-  >
-    <span class="sr-only">Perfil en Facebook</span>
-    <svg
-      class="w-8 h-8 fill fill-current"
-      stroke="currentColor"
-      viewBox="0 0 115 115"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-      role="img"
-    >
-      <path
-        d="M115 12.321v90.358c0 6.802-5.519 12.321-12.321 12.321H80.782V69.513h15.556l2.233-17.352H80.782V41.07c0-5.03 1.387-8.445 8.6-8.445h9.19V17.122c-1.592-.206-7.034-.693-13.4-.693-13.246.0-22.333 8.086-22.333 22.948v12.81H47.232v17.352h15.633V115H12.321C5.52 115 0 109.481.0 102.679V12.32C0 5.52 5.519.0 12.321.0h90.358C109.48.0 115 5.519 115 12.321z"
-      ></path>
-    </svg>
-  </a>
+    <div class="flex">
+      <a
+        href="{{ facebook }}"
+        rel="noopener noreferrer me"
+        class="mr-2 transition-colors duration-300 hover:text-gray-300"
+      >
+        <span class="sr-only">Perfil en Facebook</span>
+        <svg
+          class="fill h-8 w-8 fill-current"
+          stroke="currentColor"
+          viewBox="0 0 115 115"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          role="img"
+        >
+          <path
+            d="M115 12.321v90.358c0 6.802-5.519 12.321-12.321 12.321H80.782V69.513h15.556l2.233-17.352H80.782V41.07c0-5.03 1.387-8.445 8.6-8.445h9.19V17.122c-1.592-.206-7.034-.693-13.4-.693-13.246.0-22.333 8.086-22.333 22.948v12.81H47.232v17.352h15.633V115H12.321C5.52 115 0 109.481.0 102.679V12.32C0 5.52 5.519.0 12.321.0h90.358C109.48.0 115 5.519 115 12.321z"
+          ></path>
+        </svg>
+      </a>
 
-  <a
-    href="{{ instagram }}"
-    rel="noopener noreferrer me"
-    class="hover:text-blue-700 transition-colors duration-300"
-  >
-    <span class="sr-only">Perfil en Instagram</span>
-    <svg
-      class="w-8 h-8 fill fill-current"
-      stroke="currentColor"
-      viewBox="0 0 115 115"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-      role="img"
-    >
-      <path
-        d="M57.526 28.111c-16.254.0-29.364 13.11-29.364 29.363.0 16.254 13.11 29.364 29.364 29.364 16.253.0 29.363-13.11 29.363-29.364.0-16.253-13.11-29.363-29.363-29.363zm0 48.453c-10.504.0-19.09-8.56-19.09-19.09.0-10.528 8.56-19.09 19.09-19.09 10.528.0 19.09 8.562 19.09 19.09.0 10.53-8.587 19.09-19.09 19.09zM94.939 26.91a6.833 6.833.0 0 1-6.849 6.849 6.833 6.833.0 0 1-6.849-6.849 6.85 6.85.0 0 1 13.698.0zm19.448 6.951c-.435-9.174-2.53-17.301-9.251-23.997C98.44 3.17 90.313 1.074 81.139.614c-9.456-.537-37.797-.537-47.252.0-9.15.434-17.276 2.53-23.997 9.225S1.099 24.66.639 33.836c-.537 9.455-.537 37.796.0 47.252.434 9.174 2.53 17.3 9.251 23.996 6.721 6.696 14.822 8.792 23.997 9.252 9.455.536 37.796.536 47.252.0 9.174-.435 17.301-2.53 23.997-9.252 6.695-6.695 8.79-14.822 9.25-23.996.537-9.456.537-37.771.0-47.227zM102.17 91.233c-1.993 5.01-5.852 8.868-10.887 10.887-7.538 2.99-25.427 2.3-33.758 2.3-8.332.0-26.246.664-33.76-2.3-5.008-1.993-8.867-5.852-10.886-10.887-2.99-7.539-2.3-25.427-2.3-33.759.0-8.33-.664-26.245 2.3-33.758 1.993-5.01 5.852-8.868 10.887-10.887 7.539-2.99 25.427-2.3 33.759-2.3 8.33.0 26.245-.665 33.758 2.3 5.01 1.993 8.868 5.852 10.887 10.887 2.99 7.538 2.3 25.427 2.3 33.758.0 8.332.69 26.246-2.3 33.76z"
-      ></path>
-    </svg>
-  </a>
+      <a
+        href="{{ instagram }}"
+        rel="noopener noreferrer me"
+        class="transition-colors duration-300 hover:text-gray-300"
+      >
+        <span class="sr-only">Perfil en Instagram</span>
+        <svg
+          class="fill h-8 w-8 fill-current"
+          stroke="currentColor"
+          viewBox="0 0 115 115"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          role="img"
+        >
+          <path
+            d="M57.526 28.111c-16.254.0-29.364 13.11-29.364 29.363.0 16.254 13.11 29.364 29.364 29.364 16.253.0 29.363-13.11 29.363-29.364.0-16.253-13.11-29.363-29.363-29.363zm0 48.453c-10.504.0-19.09-8.56-19.09-19.09.0-10.528 8.56-19.09 19.09-19.09 10.528.0 19.09 8.562 19.09 19.09.0 10.53-8.587 19.09-19.09 19.09zM94.939 26.91a6.833 6.833.0 0 1-6.849 6.849 6.833 6.833.0 0 1-6.849-6.849 6.85 6.85.0 0 1 13.698.0zm19.448 6.951c-.435-9.174-2.53-17.301-9.251-23.997C98.44 3.17 90.313 1.074 81.139.614c-9.456-.537-37.797-.537-47.252.0-9.15.434-17.276 2.53-23.997 9.225S1.099 24.66.639 33.836c-.537 9.455-.537 37.796.0 47.252.434 9.174 2.53 17.3 9.251 23.996 6.721 6.696 14.822 8.792 23.997 9.252 9.455.536 37.796.536 47.252.0 9.174-.435 17.301-2.53 23.997-9.252 6.695-6.695 8.79-14.822 9.25-23.996.537-9.456.537-37.771.0-47.227zM102.17 91.233c-1.993 5.01-5.852 8.868-10.887 10.887-7.538 2.99-25.427 2.3-33.758 2.3-8.332.0-26.246.664-33.76-2.3-5.008-1.993-8.867-5.852-10.886-10.887-2.99-7.539-2.3-25.427-2.3-33.759.0-8.33-.664-26.245 2.3-33.758 1.993-5.01 5.852-8.868 10.887-10.887 7.539-2.99 25.427-2.3 33.759-2.3 8.33.0 26.245-.665 33.758 2.3 5.01 1.993 8.868 5.852 10.887 10.887 2.99 7.538 2.3 25.427 2.3 33.758.0 8.332.69 26.246-2.3 33.76z"
+          ></path>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <section class="border-t border-t-white pt-3">
+    <p class="text-center" data-updated="{% version %}">
+      <svg
+        class="inline h-6 w-6 transition-colors duration-300"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+        ></path>
+      </svg>
+      con
+      <svg
+        class="inline h-6 w-6 text-red-600 transition-colors duration-300"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+        ></path>
+      </svg>
+      por
+      <a
+        href="https://angelguerra.me/"
+        title="Página web de Ángel Guerra"
+        target="_blank"
+        class="underline underline-offset-1 transition-colors duration-300 hover:text-gray-300"
+        >Ángel Guerra</a
+      >
+    </p>
+  </section>
 </div>
-
-<p class="mt-3" data-updated="{% version %}">
-  <svg
-    class="w-6 h-6 inline hover:text-orange-600 transition-colors duration-300"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-    ></path>
-  </svg>
-  con
-  <svg
-    class="w-6 h-6 inline hover:text-red-600 transition-colors duration-300"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-    ></path>
-  </svg>
-  por
-  <a
-    href="https://angelguerra.me/"
-    title="Página web de Ángel Guerra"
-    target="_blank"
-    class="border-b border-dotted hover:text-blue-700 transition-colors duration-300"
-    >Ángel Guerra</a
-  >
-</p>

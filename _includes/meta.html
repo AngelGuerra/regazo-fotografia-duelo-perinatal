@@ -7,6 +7,10 @@
 <meta http-equiv="x-ua-compatible" content="ie=edge" />
 <base href="{% domain %}" />
 
+{% if robots %}
+<meta name="robots" content="{{ robots }}" />
+{% endif %}
+
 {% comment %} META {% endcomment %}
 <title>{{ title }} | {{ name }}</title>
 <meta name="application-name" content="{{ title }} | {{ name }}" />

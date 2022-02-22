@@ -1,0 +1,40 @@
+---
+name: Regazo Fotografía
+title: Fotografía de duelo perinatal en Cantabria
+description: Ofrecemos acopañamiento fotográfico y creación de recuerdos en el duelo gestacional y neonatal - Actividad voluntaria sin ánimo de lucro.
+principal: https://regazofotografia.com/
+facebook: https://www.facebook.com/regazofotografia
+instagram: https://www.instagram.com/regazofotografia/
+---
+
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    {% include "meta.html" %}
+    <link rel="stylesheet" href="/assets/css/tailwind.css" />
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <header
+      class="sticky top-0 border-b border-zinc-900 bg-white py-6 shadow-md"
+    >
+      <nav class="container mx-auto">
+        <ul class="flex items-center justify-center">
+          <li>
+            <a
+              href="/"
+              rel="home"
+              class="text-center font-title text-2xl transition-colors hover:text-zinc-700 sm:text-3xl md:text-4xl lg:text-5xl"
+              >Regazo Fotografía</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="pt-10 grow">{{ content }}</main>
+    <footer
+      class="flex flex-col items-center justify-center bg-zinc-900 py-6 text-white"
+    >
+      {% include "footer.html" %}
+    </footer>
+  </body>
+</html>

@@ -7,7 +7,7 @@
 ## Desarrollo
 
 - El proyecto está realizado con [11ty](https://www.11ty.dev/), un generador de sitios estáticos muy sencillo de utilizar.
-- Para los estilos se ha utilizado [TailwindCSS](https://tailwindcss.com/), una librería _utility-first_ que mola.
+- Para los estilos se ha utilizado [Tailwind CSS](https://tailwindcss.com/), una librería _utility-first_ que mola.
 - Para el javascript - el menú principalmente - se ha utilizado [Alpine](https://github.com/alpinejs/alpine).
 - Para el despliegue utiliza [Netlify](https://www.netlify.com/).
 

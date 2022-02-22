@@ -185,6 +185,7 @@ const absoluteUrl = (url) => {
 module.exports = (eleventyConfig) => {
   eleventyConfig.setUseGitIgnore(false);
   eleventyConfig.addLayoutAlias("default", "layouts/default.html");
+  eleventyConfig.addLayoutAlias("legal", "layouts/legal.html");
   eleventyConfig.setTemplateFormats(["html"]);
   eleventyConfig.addPassthroughCopy({
     "_assets/css/": "./assets/css/",
