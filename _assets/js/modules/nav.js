@@ -17,10 +17,7 @@ const nav = () => {
         event.currentTarget.getAttribute("href")
       ).offsetTop;
 
-      scroll({
-        top: offsetTop,
-        behavior: "smooth",
-      });
+      scroll({ top: offsetTop });
     },
 
     scrollToAndCloseMenu(event) {

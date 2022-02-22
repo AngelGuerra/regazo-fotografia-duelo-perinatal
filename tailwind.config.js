@@ -1,27 +1,9 @@
 module.exports = {
   mode: "jit",
-  purge: ["./_site/index.html"],
-  darkMode: false,
+  content: ["./_site/**/*.html", "./_site/**/*.js"],
   theme: {
     extend: {
       fontFamily: {
-        main: [
-          "Source Sans Pro",
-          "system-ui",
-          "-apple-system",
-          "BlinkMacSystemFont",
-          "Segoe UI",
-          "Roboto",
-          "Oxygen",
-          "Ubuntu",
-          "Cantarell",
-          "Helvetica Neue",
-          "Arial",
-          "sans-serif",
-          "Apple Color Emoji",
-          "Segoe UI Emoji",
-          "Segoe UI Symbol",
-        ],
         title: [
           "Indie Flower",
           "system-ui",

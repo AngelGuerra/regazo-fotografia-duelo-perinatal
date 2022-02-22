@@ -190,7 +190,8 @@ module.exports = (eleventyConfig) => {
     "_assets/css/": "./assets/css/",
     "_assets/favicon": "/",
     "_tmp/js/": "./assets/js/",
-    favicon: ".",
+    "_assets/fonts/Indie_Flower/IndieFlower-Regular.ttf":
+      "./assets/fonts/IndieFlower-Regular.ttf",
   });
   eleventyConfig.addTransform("htmlmin", minifyHtml);
   eleventyConfig.addShortcode("version", currentDate);

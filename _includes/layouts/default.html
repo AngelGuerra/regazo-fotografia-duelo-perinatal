@@ -11,35 +11,23 @@ instagram: https://www.instagram.com/regazofotografia/
 {% capture memoriesBox %}{% responsiveBackground "_assets/img/memories-box.jpeg", "body #sessions" %}{% endcapture %}
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
   <head>
-    {% include meta.html %}
-    <link
-      href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Source+Sans+Pro:wght@300;400;700&display=swap"
-      rel="stylesheet"
-    />
+    {% include "meta.html" %}
     <link rel="stylesheet" href="/assets/css/tailwind.css" />
-    <link rel="stylesheet" href="/assets/css/styles.css" />
     <style>
-      {{ paperCranes | safe }}
-      {{ memoriesBox | safe }}
+      {{ paperCranes }}
+      {{ memoriesBox }}
     </style>
   </head>
-  <body class="font-main">
-    <header class="fixed w-full z-10 top-0">{% include header.html %}</header>
-    <main class="mt-20">{{ content | safe }}</main>
+  <body>
+    <header class="fixed w-full z-10 top-0">{% include "header.html" %}</header>
+    <main class="mt-20">{{ content }}</main>
     <footer
-      class="
-        bg-gray-800
-        text-white
-        py-6
-        flex flex-col
-        justify-center
-        items-center
-      "
+      class="bg-gray-800 text-white py-6 flex flex-col justify-center items-center"
     >
-      {% include footer.html %}
+      {% include "footer.html" %}
     </footer>
-    {% include scripts.html %}
+    {% include "scripts.html" %}
   </body>
 </html>

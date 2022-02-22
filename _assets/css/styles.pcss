@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Indie Flower";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/IndieFlower-Regular.ttf");
+}
+
+::-webkit-scrollbar {
+  width: theme("width.2");
+}
+
+::-webkit-scrollbar-track {
+  background-color: theme("backgroundColor.gray.300");
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: theme("backgroundColor.blue.700");
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: theme("backgroundColor.blue.900");
+}
+
+[x-cloak] {
+  display: none !important;
+}

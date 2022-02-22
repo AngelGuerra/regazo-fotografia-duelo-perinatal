@@ -6,26 +6,26 @@
   "scripts": {
     "dev": "npm-run-all --parallel dev:*",
     "dev:11ty": "eleventy --serve",
-    "dev:css": "tailwindcss -o _assets/css/tailwind.css -w",
+    "dev:css": "npx tailwindcss -i _assets/css/styles.pcss -o _assets/css/tailwind.css --watch",
     "dev:js": "esbuild _assets/js/site.js --bundle --sourcemap --target=es2020 --outfile=_tmp/js/site.js --watch",
     "build": "npm-run-all build:11ty build:css build:js",
     "build:11ty": "ELEVENTY_PRODUCTION=true eleventy",
-    "build:css": "tailwindcss -o _site/assets/css/tailwind.css",
+    "build:css": "npx tailwindcss -i _assets/css/styles.pcss -o _site/assets/css/tailwind.css",
     "build:js": "esbuild _assets/js/site.js --bundle --minify --target=es2020 --outfile=_site/assets/js/site.js"
   },
   "keywords": [],
   "author": "Ángel Guerra <a.guerrarevilla@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy": "^1.0.0",
     "@11ty/eleventy-img": "^1.0.0",
-    "alpinejs": "^3.4.2",
-    "autoprefixer": "^10.4.0",
+    "alpinejs": "^3.9.0",
+    "autoprefixer": "^10.4.2",
     "eleventy-plugin-meta-generator": "^0.1.3",
-    "esbuild": "^0.13.10",
+    "esbuild": "^0.14.23",
     "html-minifier": "^4.0.0",
     "npm-run-all": "^4.1.5",
-    "postcss": "^8.3.11",
-    "tailwindcss": "^2.2.17"
+    "postcss": "^8.4.6",
+    "tailwindcss": "^3.0.23"
   }
 }
